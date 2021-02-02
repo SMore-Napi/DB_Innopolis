@@ -1,5 +1,4 @@
 CREATE TYPE genre_type as enum ('horror', 'action', 'drama', 'science fiction', 'comedy');
-CREATE TYPE responsibility_type as enum ('actor', 'director');
 
 CREATE TABLE if not exists MOVIE
 (
@@ -34,12 +33,6 @@ CREATE TABLE if not exists EMPLOYEE
     id            serial primary key not null,
     name          varchar(255)       not null,
     date_of_birth date               not null
-);
-
-CREATE TABLE if not exists DUTY
-(
-    employee_id    integer references EMPLOYEE (id) on delete cascade not null,
-    responsibility responsibility_type                                not null
 );
 
 CREATE TABLE if not exists ACTING
@@ -84,14 +77,6 @@ VALUES ('Marlon Brando', TO_DATE('03/04/1924', 'DD/MM/YYYY')),
        ('Francis Ford Coppola', TO_DATE('07/04/1939', 'DD/MM/YYYY')),
        ('Sylvester Stallone', TO_DATE('06/06/1946', 'DD/MM/YYYY')),
        ('John Avildsen', TO_DATE('21/12/1935', 'DD/MM/YYYY'));
-
-INSERT INTO DUTY(employee_id, responsibility)
-VALUES (1, 'actor'),
-       (2, 'actor'),
-       (3, 'director'),
-       (4, 'actor'),
-       (5, 'director');
-
 
 INSERT INTO DIRECTING(employee_id, movie_id)
 VALUES (5, 1),
