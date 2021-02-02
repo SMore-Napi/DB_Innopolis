@@ -44,22 +44,22 @@ CREATE TABLE if not exists DUTY
 
 CREATE TABLE if not exists ACTING
 (
-    id        serial primary key                                 not null,
+    id          serial primary key                                 not null,
     employee_id integer references EMPLOYEE (id) on delete cascade not null,
-    movie_id  integer references MOVIE (id) on delete cascade    not null,
-    role      varchar(255)                                       not null
+    movie_id    integer references MOVIE (id) on delete cascade    not null,
+    role        varchar(255)                                       not null
 );
 
 CREATE TABLE if not exists QUOTE
 (
     acting_id integer references ACTING (id) on delete cascade not null,
-    line     text                                             not null
+    line      text                                             not null
 );
 
 CREATE TABLE if not exists DIRECTING
 (
     employee_id integer references EMPLOYEE (id) on delete cascade not null,
-    movie_id  integer references MOVIE (id) on delete cascade    not null
+    movie_id    integer references MOVIE (id) on delete cascade    not null
 );
 
 INSERT INTO MOVIE(title, year, length, outline)
