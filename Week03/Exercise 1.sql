@@ -8,12 +8,12 @@ LIMIT 6 OFFSET 11;
 SELECT address
 FROM address
          JOIN city ON address.city_id = city.city_id
-WHERE city.city ~ 'A.+';
+WHERE city.city ~ '^A';
 
 --  List all customers' first name, last name and the city they live in.
 SELECT first_name, last_name, city
-FROM (customer FULL JOIN address ON customer.address_id = address.address_id) AS temp
-         FULL JOIN city ON city.city_id = temp.city_id;
+FROM (customer INNER JOIN address ON customer.address_id = address.address_id) AS temp
+         INNER JOIN city ON city.city_id = temp.city_id;
 
 -- Find all customers with at least one payment whose amount is greater
 -- than 11 dollars.
