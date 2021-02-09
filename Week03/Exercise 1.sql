@@ -3,6 +3,7 @@ SELECT *
 FROM country
 ORDER BY country_id ASC
 LIMIT 6 OFFSET 11;
+
 -- List all addresses in a city whose name starts with 'A’.
 SELECT address
 FROM address
