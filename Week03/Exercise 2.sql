@@ -12,7 +12,7 @@ FROM customer_spent;
 
 
 -- TRIGGERS --
-create function exists_phone() returns trigger
+CREATE FUNCTION phone_exists() RETURNS trigger
     language plpgsql
 as
 $$
@@ -22,20 +22,20 @@ BEGIN
         -- just notify about already existed entry with specified phone number.
 
         -- DELETE FROM address WHERE phone = NEW.phone;
-
         RAISE NOTICE 'Address with specified phone number % is already exists!', NEW.phone;
         RETURN NULL;
     END IF;
+    RETURN NEW;
 END
 $$;
 
-alter function exists_phone() owner to postgres;
+alter function phone_exists() owner to postgres;
 
 CREATE TRIGGER view_insert
     BEFORE INSERT
     ON address
     FOR EACH ROW
-EXECUTE PROCEDURE exists_phone();
+EXECUTE PROCEDURE phone_exists();
 
 INSERT INTO address(address, district, city_id, postal_code, phone)
-VALUES ('1 Studencheskaya', 'RT', 343, 420500, 14033335568);
+VALUES ('1 Studencheskaya', 'RT', 343, '420500', '88005553535');

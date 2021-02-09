@@ -17,7 +17,7 @@ FROM (customer INNER JOIN address ON customer.address_id = address.address_id) A
 
 -- Find all customers with at least one payment whose amount is greater
 -- than 11 dollars.
-SELECT *
+SELECT customer.*
 FROM payment,
      customer
 WHERE amount > 11
