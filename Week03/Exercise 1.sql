@@ -10,13 +10,17 @@ FROM address
 WHERE city.city ~ 'A.+';
 
 --  List all customers' first name, last name and the city they live in.
-
+SELECT first_name, last_name, city
+FROM (customer FULL JOIN address ON customer.address_id = address.address_id) AS temp
+         FULL JOIN city ON city.city_id = temp.city_id;
 
 -- Find all customers with at least one payment whose amount is greater
 -- than 11 dollars.
 SELECT *
-FROM payment, customer
-WHERE amount > 11 and payment.customer_id = customer.customer_id;
+FROM payment,
+     customer
+WHERE amount > 11
+  and payment.customer_id = customer.customer_id;
 
 -- Find all duplicated first names in the customer table.
 SELECT first_name
