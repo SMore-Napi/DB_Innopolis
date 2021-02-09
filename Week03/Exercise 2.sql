@@ -38,4 +38,4 @@ CREATE TRIGGER view_insert
 EXECUTE PROCEDURE phone_exists();
 
 INSERT INTO address(address, district, city_id, postal_code, phone)
-VALUES ('1 Studencheskaya', 'RT', 343, '420500', '88005553535');
+VALUES ('1 Studencheskaya', 'RT', 343, '420500', '14033335568');
