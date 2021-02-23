@@ -26,7 +26,10 @@ CREATE INDEX hash_index ON CUSTOMER_HASH USING hash (age);
 Explain ANALYZE SELECT * FROM CUSTOMER_HASH WHERE age > 32 AND age < 36;
 ```
 
-Here is the output result:
+So, we get indexes
+![indexes](screenshots/creating_indexes_1.png)
+
+Here is the output result from a script:
 
 > Before indexing
 [('Seq Scan on customer_btree  (cost=0.00..4592.42 rows=2994 width=215) (actual time=0.013..15.946 rows=2992 loops=1)',), ('  Filter: ((age > 32) AND (age < 36))',), ('  Rows Removed by Filter: 97008',), ('Planning Time: 1.008 ms',), ('Execution Time: 16.166 ms',)]
@@ -61,7 +64,11 @@ CREATE INDEX gist_index ON CUSTOMER_HASH USING gist (to_tsvector('english', revi
 Explain ANALYZE SELECT * FROM CUSTOMER_HASH WHERE to_tsvector('english', review) @@ to_tsquery('english', 'face | group | movie');
 ```
 
-Here is the output result:
+So, we get indexes
+![indexes](screenshots/creating_indexes_2.png)
+
+
+Here is the output result from a script:
 
 > Before indexing
 [('Gather  (cost=1000.00..15178.80 rows=1493 width=215) (actual time=3.033..2213.539 rows=6580 loops=1)',), ('  Workers Planned: 2',), ('  Workers Launched: 2',), ('  ->  Parallel Seq Scan on customer_btree  (cost=0.00..14029.50 rows=622 width=215) (actual time=6.798..2199.873 rows=2193 loops=3)',), ("        Filter: (to_tsvector('english'::regconfig, review) @@ '''face'' | ''group'' | ''movi'''::tsquery)",), ('        Rows Removed by Filter: 31140',), ('Planning Time: 1.803 ms',), ('Execution Time: 2214.409 ms',)]
