@@ -7,7 +7,6 @@ PREPARE exercise2 AS
                        staff.store_id,
                        staff.staff_id,
                        store.store_id   as st_id,
-                       manager_staff_id,
                        store.address_id as id
                 FROM public.payment,
                      public.staff,
