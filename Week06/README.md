@@ -29,7 +29,7 @@ As it might be seen, the most expensive step (that utilizes `HashAggregate  (cos
 ```
 SELECT DISTINCT film_id FROM rental JOIN inventory ON rental.inventory_id = inventory.inventory_id
 ```
-The only way to optimize it is to rewrite it as follows:
+Since the `DISTINCT` keyword cannot be optimized and introduction of indices on `inventory_id` attribute do not impact anyhow on the efficiency of queries, the only way to optimize it is to rewrite it as follows:
 ``` 
 SELECT film_id FROM inventory INNER JOIN rental ON rental.inventory_id = inventory.inventory_id
 ```
