@@ -36,7 +36,7 @@ SELECT DISTINCT film_id FROM rental JOIN inventory ON rental.inventory_id = inve
 ```
 
 Since the `DISTINCT` keyword cannot be optimized and introduction of indices on `inventory_id` attribute do not impact
-anyhow on the efficiency of queries, the only way to optimize it is to rewrite it as several nested `JOIN` operations as it is done [here](Query 1.sql). \
+anyhow on the efficiency of queries, the only way to optimize it is to rewrite it as several nested `JOIN` operations as it is done [here](Query%201.sql). \
 It yields an improvement `88.14 vs 554.90` in terms of cost function:
 
 ```
