@@ -33,7 +33,7 @@ Since the `DISTINCT` keyword cannot be optimized and introduction of indices on 
 ``` 
 SELECT film_id FROM inventory INNER JOIN rental ON rental.inventory_id = inventory.inventory_id
 ```
-It yields an improvement `542.92 vs 554.90` in terms of cost function:
+It yields an improvement `542.92 vs 554.90` in terms of overall cost function:
 ```
 Hash Join  (cost=542.92..615.36 rows=23 width=15)
   Hash Cond: (film.film_id = film_category.film_id)
@@ -100,7 +100,7 @@ We can optimize it using indexing. Since we need to compare dates with >= sign, 
 ``` 
 CREATE INDEX date_index ON payment using btree (payment_date);
 ```
-It yields an improvement `118.87 vs 290.45` in terms of cost function:
+It yields an improvement `183.39 vs 348.03` in terms of overall cost function:
 ```
 Sort  (cost=182.89..183.39 rows=200 width=41) (actual time=0.631..0.634 rows=2 loops=1)
   Sort Key: (max((sum(payment.amount)))) DESC
