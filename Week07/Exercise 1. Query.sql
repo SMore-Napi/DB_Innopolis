@@ -21,3 +21,4 @@ BEGIN
           AND address.city_id <= 600
           AND address.address LIKE '%11%';
 END;
+$$ LANGUAGE plpgsql;
