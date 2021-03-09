@@ -35,10 +35,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT get_customers(10, 40);
-SELECT get_customers(10, 11);
-SELECT get_customers(0, 600);
-SELECT get_customers(-10, 40);
-SELECT get_customers(10, 601);
-SELECT get_customers(10, -10);
-SELECT get_customers(30, 10);
+SELECT * FROM  get_customers(10, 40);
+SELECT * FROM  get_customers(10, 11);
+SELECT * FROM  get_customers(0, 600);
+SELECT * FROM  get_customers(-10, 40);
+SELECT * FROM  get_customers(10, 601);
+SELECT * FROM  get_customers(10, -10);
+SELECT * FROM  get_customers(30, 10);
