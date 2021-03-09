@@ -1,12 +1,12 @@
 # Exercise 1
 import psycopg2
-import ssl
-import certifi
-import geopy
+#import ssl
+#import certifi
+#import geopy
 from geopy.geocoders import Nominatim
 
-ctx = ssl.create_default_context(cafile=certifi.where())
-geopy.geocoders.options.default_ssl_context = ctx
+#ctx = ssl.create_default_context(cafile=certifi.where())
+#geopy.geocoders.options.default_ssl_context = ctx
 
 con = psycopg2.connect(database="dvdrental", user="postgres",
                        password="postgres", host="localhost", port="5432")
