@@ -17,7 +17,7 @@ VALUES ('Account 1', 1000),
 
 -- Shared transaction for part 1.
 BEGIN;
-SAVEPOINT ORIGIN;
+SAVEPOINT PART1;
 
 -- Transaction T1.
 UPDATE accounts
@@ -44,11 +44,11 @@ SET credit = credit + 100
 WHERE name = 'Account 3';
 
 -- Return credits for all accounts.
-SELECT credit
+SELECT name, credit
 FROM accounts;
 
 -- Return to the original state.
-ROLLBACK TO ORIGIN;
+ROLLBACK TO PART1;
 
 
 -- Part 2.
@@ -64,7 +64,7 @@ VALUES ('Account 4', 0, NULL);
 
 -- Shared transaction for part 2.
 BEGIN;
-SAVEPOINT ORIGIN;
+SAVEPOINT PART2;
 
 -- Transaction T1.
 UPDATE accounts
@@ -97,8 +97,9 @@ SET credit = credit + 30
 WHERE name = 'Account 4';
 
 -- Return credits for all accounts.
-SELECT credit
+SELECT name, credit
 FROM accounts;
 
 -- Return to the original state.
-ROLLBACK TO ORIGIN;
+ROLLBACK TO PART2;
+
