@@ -1,4 +1,5 @@
--- Exercise 1 (part 1)
+-- Exercise 1
+-- Part 1
 
 -- Create accounts table.
 CREATE TABLE accounts
@@ -50,10 +51,16 @@ FROM accounts;
 ROLLBACK TO ORIGIN;
 
 
--- Exercise 1 (part 2)
+-- Exercise 1
+-- Part 2
 
 -- Create new attribute bank_name.
 ALTER TABLE accounts
-ADD bank_name VARCHAR(20) DEFAULT NULL;
-UPDATE accounts SET bank_name = 'SpearBank' WHERE name = 'Account 1' or name = 'Account 3';
-UPDATE accounts SET bank_name = 'Tinkoff' WHERE name = 'Account 2';
+    ADD bank_name VARCHAR(20) DEFAULT NULL;
+UPDATE accounts
+SET bank_name = 'SpearBank'
+WHERE name = 'Account 1'
+   or name = 'Account 3';
+UPDATE accounts
+SET bank_name = 'Tinkoff'
+WHERE name = 'Account 2';
