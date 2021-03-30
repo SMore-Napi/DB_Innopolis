@@ -7,8 +7,7 @@ Command:
 ```
 [Output result](ex1.json)
 
-### Find the fields restaurant_id, name, borough and cuisine for all the documents in
-the collection restaurant.\
+### Find the fields restaurant_id, name, borough and cuisine for all the documents in the collection restaurant.\
 Command:
 ```
 {}
