@@ -117,6 +117,7 @@ Thus, serializable do not allow us to make concurrent transactions.
 Terminal showed this message as confirmation of words above:
 
 ОШИБКА:  не удалось сериализовать доступ из-за зависимостей чтения/записи между транзакциями
+
 Translation: ERROR: failed to serialize access from read / transaction dependencies between transactions 
 
 Final stage of table `account`.
