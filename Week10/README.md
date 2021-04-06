@@ -33,7 +33,8 @@ That is why the first terminal still shows the old table version, so called the 
 After step 5 both terminals show the same table.
 
 ##### Explain the output form the second terminal.
-The second terminal loops forever. It can't accesed and set value to the row since it also was used in the first transaction. 
+The second terminal loops forever. It can't access and set new value to the row since it also was used in the first transaction.\
+Transaction 1 holds this resource after step 7, and Transaction 2 can access it only after step 9 when the first Transaction is committed, and the resource is not locked.
 
 #### Test with Repeatable read isolation level.
 
