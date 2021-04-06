@@ -94,7 +94,7 @@ dvdrental=# SELECT * FROM account WHERE group_id = 2;
 (2 rows)
 ```
 
-The `group_id` was updated from the second terminal. This change was seen from the first session, i.e. Bob became member of second group. However, first session cannot modify balance of Bob as it was reserved by the second session. As a result, the Bob was moved to second group, but his balance was not modified. \
+The `group_id` was updated from the second terminal. This change was seen from the first session, i.e. Bob became member of second group. However, first session cannot modify balance of Bob due to read commited police (only second session can modify this row). As a result, the Bob was moved to second group, but his balance was not modified. 
 
 Using `REPEATABLE READ` isolation level: \
 <b>Terminal 1. </b>
