@@ -90,12 +90,25 @@ dvdrental=# SELECT * FROM account WHERE group_id = 2;
 ```
 
 ### Exercise 3.
-####REPEATABLE READ
+#### REPEATABLE READ
 Repeatable read allows us to add new rows,
 but rows that already was in the table
 will be changed only by terminal one, while other terminals
 cannot change existing data(update or delete).
-####SERIALIZABLE
+
+Final stage of table `account`.
+```
+customers=# select * from account;
+ id | username |     fullname     | balance | group_id
+----+----------+------------------+---------+----------
+  1 | jones    | Alice Jones      |      82 |        1
+  2 | bitdiddl | Ben Bitdiddle    |      65 |        1
+  4 | alyssa   | Alyssa P. Hacker |      79 |        3
+  5 | bbrown   | Bob Brown        |     100 |        2
+  3 | mike     | Michael Dole     |     146 |        2
+```
+
+#### SERIALIZABLE
 Serializable cannot allow us to make any changes in the database,
 so only first terminal changes will be used in the result.
 
