@@ -32,6 +32,34 @@ dvdrental=# COMMIT;
 COMMIT
 ```
 
+<b> Terminal 2. </b>
+
+```
+dvdrental=# BEGIN;
+BEGIN
+
+dvdrental=# SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SET
+
+dvdrental=# UPDATE account SET group_id = 2 WHERE fullname = 'Bob Brown';
+UPDATE 1
+
+dvdrental=# COMMIT;
+COMMIT
+```
+
+Final state of the table `account`. 
+
+```
+dvdrental=# SELECT * FROM account WHERE group_id = 2;
+ id | username |   fullname   | balance | group_id 
+----+----------+--------------+---------+----------
+  5 | bbrown   | Bob Brown    |     100 |        2
+  3 | mike     | Michael Dole |      88 |        2
+(2 rows)
+```
+
+
 Using `REPEATABLE READ` isolation level: \
 <b>Terminal 1. </b>
 ```
