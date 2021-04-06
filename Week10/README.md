@@ -2,6 +2,41 @@
 
 ### Exercise 1.
 
+#### Test with Read committed isolation level.
+
+##### Do both terminals show the same information? Explain the reason.
+Terminals show different information.\
+After step 4 the first Terminal shows the following table:
+```
+ id | username |     fullname     | balance | group_id 
+----+----------+------------------+---------+----------
+  1 | jones    | Alice Jones      |      82 |        1
+  2 | bitdiddl | Ben Bitdiddle    |      65 |        1
+  3 | mike     | Michael Dole     |      73 |        2
+  4 | alyssa   | Alyssa P. Hacker |      79 |        3
+  5 | bbrown   | Bob Brown        |     100 |        3
+(5 rows)
+```
+While the second Terminal shows this table:
+```
+ id | username |     fullname     | balance | group_id 
+----+----------+------------------+---------+----------
+  2 | bitdiddl | Ben Bitdiddle    |      65 |        1
+  3 | mike     | Michael Dole     |      73 |        2
+  4 | alyssa   | Alyssa P. Hacker |      79 |        3
+  5 | bbrown   | Bob Brown        |     100 |        3
+  1 | ajones   | Alice Jones      |      82 |        1
+(5 rows)
+```
+It happens because the second transaction changed the row value, but this change has not been committed yet.\
+That is why the first terminal still shows the old table version, so called the dirty read.\
+After step 5 both terminals show the same table.
+
+##### Explain the output form the second terminal.
+The second terminal loops forever. It can't accesed and set value to the row since it also was used in the first transaction. 
+
+#### Test with Repeatable read isolation level.
+
 ### Exercise 2.
 
 Using `READ COMMITTED` isolation level: \
