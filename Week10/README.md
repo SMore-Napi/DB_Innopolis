@@ -154,6 +154,9 @@ dvdrental=# SELECT * FROM account WHERE group_id = 2;
 (2 rows)
 ```
 
+The `group_id` was updated from the second terminal. On contrary to the previous case, this change was not seen from the first session, i.e. Bob did not become member of second group for the first session. Therefore, the balance was not updated for the Bob. Finally, after the commits the Bob was moved to second group, but his balance was not modified. 
+
+
 ### Exercise 3.
 #### REPEATABLE READ
 Repeatable read allows us to add new rows,
