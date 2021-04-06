@@ -20,7 +20,7 @@ WHERE group_id = 2;
 -- TODO: what is sum?
 -- Step 8.
 UPDATE account
-SET balance = balance + 15
+SET balance = balance + 73
 WHERE group_id = 2;
 
 -- Step 9.
@@ -28,7 +28,7 @@ SELECT *
 FROM account
 WHERE group_id = 2;
 
--- Step 10.
+-- Step 11.
 COMMIT;
 
 -- TERMINAL 2.
@@ -49,5 +49,5 @@ SELECT *
 FROM account
 WHERE group_id = 2;
 
--- Step 11.
+-- Step 12.
 COMMIT;
