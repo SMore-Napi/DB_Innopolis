@@ -1,4 +1,4 @@
-##Report for Lab 10 - Week 11.
+## Report for Lab 10 - Week 11.
 
 ### Exercise 1.
 
