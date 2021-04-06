@@ -1,3 +1,5 @@
+-- Using READ COMMITTED isolation level.
+
 -- TERMINAL 1.
 
 -- Step 1. Start a transaction.
