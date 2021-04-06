@@ -74,7 +74,7 @@ ERROR:  could not serialize access due to concurrent update
 
 ### Exercise 2.
 
-Using `READ COMMITTED` isolation level: \
+#### Using `READ COMMITTED` isolation level: \
 <b>Terminal 1. </b>
 ```
 dvdrental=# BEGIN; 
@@ -129,9 +129,10 @@ dvdrental=# SELECT * FROM account WHERE group_id = 2;
 (2 rows)
 ```
 
-The `group_id` was updated from the second terminal. This change was seen from the first session, i.e. Bob became member of second group. However, first session cannot modify balance of Bob due to read commited police (only second session can modify this row). As a result, the Bob was moved to second group, but his balance was not modified. 
+##### Explanation.
+The `group_id` was updated from the second terminal (second session). This change was seen from the first session, i.e. Bob became member of second group globally. However, first session cannot modify balance of Bob due to read commited police (only second session can modify this row as it already modified earlier). As a result, the Bob was moved to second group, but his balance was not modified. 
 
-Using `REPEATABLE READ` isolation level: \
+#### Using `REPEATABLE READ` isolation level: \
 <b>Terminal 1. </b>
 ```
 dvdrental=# BEGIN;
@@ -188,7 +189,8 @@ dvdrental=# SELECT * FROM account WHERE group_id = 2;
 (2 rows)
 ```
 
-The `group_id` was updated from the second terminal. On contrary to the previous case, this change was not seen from the first session, i.e. Bob did not become member of second group for the first session. Therefore, the balance was not updated for the Bob. Finally, after the commits the Bob was moved to second group, but his balance was not modified. 
+##### Explanation.
+The `group_id` was updated from the second terminal (second session). On contrary to the previous case, this change was not seen for the first session, i.e. Bob did not become member of second group and there was only one person with `group_id=2`. Therefore, the balance was updated only for `Michael Dole`. After the commits in both sessions Bob was moved to second group, but his balance was not modified. 
 
 
 ### Exercise 3.
