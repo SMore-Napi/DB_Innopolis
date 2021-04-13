@@ -29,3 +29,11 @@ CREATE (fighter1:Fighter{name:"Khabib Nurmagomedov", weight:155}),
 ![image1](image1.png)
 ![image2](image2.png)
 ## Exercise 1. Part 2.
+
+### Return all middle/Walter/light weight fighters (155,170,185) who at least have one win.
+```
+MATCH (fighter:Fighter)-[:BEATS]-(another_fighter:Fighter)
+WHERE fighter.weight IN [155, 170, 185]
+RETURN fighter
+```
+![image3](image3.png)
