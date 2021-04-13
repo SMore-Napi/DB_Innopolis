@@ -1,6 +1,8 @@
 # Week 12
 
-## Exercise 1. Part 1.
+## Exercise 1. Part 1
+
+### Build a representation of the relationship between the following fighters
 ```
 CREATE (fighter1:Fighter{name:"Khabib Nurmagomedov", weight:155}),
        (fighter2:Fighter{name:"Rafael Dos Anjos", weight:155}),
@@ -28,12 +30,24 @@ CREATE (fighter1:Fighter{name:"Khabib Nurmagomedov", weight:155}),
 ```
 ![image1](image1.png)
 ![image2](image2.png)
-## Exercise 1. Part 2.
 
-### Return all middle/Walter/light weight fighters (155,170,185) who at least have one win.
+## Exercise 1. Part 2
+
+### Return all middle/Walter/light weight fighters (155,170,185) who at least have one win
 ```
 MATCH (fighter:Fighter)-[:BEATS]-(another_fighter:Fighter)
 WHERE fighter.weight IN [155, 170, 185]
 RETURN fighter
 ```
 ![image3](image3.png)
+
+### Return fighters who had 1-1 record with each other. Use Count from the aggregation functions
+
+
+### Return all fighter that “Khabib Nurmagomedov” can beat them and he didn’t have a fight with them yet
+
+
+### Return undefeated Fighters(0 loss), defeated fighter (0 wins)
+
+
+### Return all fighters MMA records and create query to enter the record as a property for a fighter {name, weight, record}
