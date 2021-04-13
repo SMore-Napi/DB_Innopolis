@@ -42,6 +42,13 @@ RETURN fighter
 ![image3](image3.png)
 
 ### Return fighters who had 1-1 record with each other. Use Count from the aggregation functions
+```
+MATCH (fighter:Fighter)-[b:BEATS]->(another_fighter:Fighter), (another_fighter:Fighter)-[b2:BEATS]->(fighter:Fighter)
+WITH count(b) as c1, count(b2) as c2, fighter as f
+WHERE c1=1 AND c2=1
+RETURN f
+```
+![image4](image4.png)
 
 
 ### Return all fighter that “Khabib Nurmagomedov” can beat them and he didn’t have a fight with them yet
