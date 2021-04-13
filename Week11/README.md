@@ -52,9 +52,21 @@ RETURN f
 
 
 ### Return all fighter that “Khabib Nurmagomedov” can beat them and he didn’t have a fight with them yet
+```
+MATCH (fighter:Fighter)-[:BEATS*]->(another_fighter:Fighter), (another_fighter:Fighter)-[:BEATS*]->(others:Fighter)
+WHERE fighter.name = "Khabib Nurmagomedov" AND another_fighter.name <> others.name
+RETURN others
+```
+![image5](image5.png)
 
 
 ### Return undefeated Fighters(0 loss), defeated fighter (0 wins)
+```
+MATCH (winner:Fighter) WHERE NOT (winner)<-[:BEATS]-(:Fighter) RETURN winner
+MATCH (loser:Fighter) WHERE NOT (loser)-[:BEATS]->(:Fighter) RETURN loser
+```
+![image6](image6.png)
+![image7](image7.png)
 
 
 ### Return all fighters MMA records and create query to enter the record as a property for a fighter {name, weight, record}
