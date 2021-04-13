@@ -31,6 +31,7 @@ CREATE (fighter1:Fighter{name:"Khabib Nurmagomedov", weight:155}),
 ![image1](image1.png)
 ![image2](image2.png)
 
+
 ## Exercise 1. Part 2
 
 ### Return all middle/Walter/light weight fighters (155,170,185) who at least have one win
@@ -50,7 +51,6 @@ RETURN f
 ```
 ![image4](image4.png)
 
-
 ### Return all fighter that “Khabib Nurmagomedov” can beat them and he didn’t have a fight with them yet
 ```
 MATCH (fighter:Fighter)-[:BEATS*]->(another_fighter:Fighter), (another_fighter:Fighter)-[:BEATS*]->(others:Fighter)
@@ -59,14 +59,20 @@ RETURN others
 ```
 ![image5](image5.png)
 
-
 ### Return undefeated Fighters(0 loss), defeated fighter (0 wins)
 ```
 MATCH (winner:Fighter) WHERE NOT (winner)<-[:BEATS]-(:Fighter) RETURN winner
-MATCH (loser:Fighter) WHERE NOT (loser)-[:BEATS]->(:Fighter) RETURN loser
 ```
 ![image6](image6.png)
+```
+MATCH (loser:Fighter) WHERE NOT (loser)-[:BEATS]->(:Fighter) RETURN loser
+```
 ![image7](image7.png)
 
-
 ### Return all fighters MMA records and create query to enter the record as a property for a fighter {name, weight, record}
+```
+MATCH (fighter:Fighter)
+SET fighter.wins = size((fighter)-->()), fighter.loses = size((fighter)<--())
+RETURN fighter
+```
+![image8](image8.png)
