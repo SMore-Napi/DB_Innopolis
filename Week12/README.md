@@ -64,7 +64,7 @@ ZADD posts 4 post:4
 ```
 
 The entry of the Posts table:
-![cutomer_row](screenshots/ex2/Posts_row.png)
+![Posts_row](screenshots/ex2/Post_row.png)
 
 The Posts table:
-![cutomer_row](screenshots/ex1/Posts.png)
+![Posts](screenshots/ex1/Posts.png)
