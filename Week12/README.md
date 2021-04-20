@@ -56,16 +56,22 @@ Set `Username`, `Id` and `Name` for users:
 HSET profile:1 Username "Booguy" Id 1 Name "Danis"
 HSET profile:2 Username "Smore" Id 2 Name "Roman"
 ```
+![profile](screenshots/ex2/profile.png)
+
 Assign followers for each profile:
 ```
 HSET followers:1 follower1 profile:2
 HSET followers:2 follower1 profile:1
 ```
+![followers](screenshots/ex2/followers.png)
+
 Assign following users for each profile:
 ```
 HSET following:1 following1 profile:2
 HSET following:2 following1 profile:1
 ```
+![following](screenshots/ex2/following.png)
+
 Create posts: 
 ```
 HMSET post:1 user profile:1 time 2021-04-20-13:02:10 text "hello"
@@ -73,34 +79,18 @@ HMSET post:2 user profile:2 time 2021-04-20-13:02:15 text "hi"
 HMSET post:3 user profile:1 time 2021-04-20-13:02:20 text "how are you"
 HMSET post:4 user profile:2 time 2021-04-20-13:02:25 text "fine"
 ```
+![Posts_row](screenshots/ex2/Post_row.png)
+
 Assign posts to the users:
 ```
 HSET posts:1 post1 post:1 post2 post:3
 HSET posts:2 post1 post:2 post2 post:4
 ```
+![posts](screenshots/ex2/posts.png)
+
 Add `Followers`, `Following` and `Posts` fields:
 ```
 HSET profile:1 Followers followers:1 Following following:1 Posts posts:1
 HSET profile:2 Followers followers:2 Following following:2 Posts posts:2
 ```
-
-
-
-##### Outdate:
-Create Posts table
-```
-HMSET post:1 user profile:1 time 2021-04-20-13:02:10 text "hello"
-HMSET post:2 user profile:2 time 2021-04-20-13:02:15 text "hi"
-HMSET post:3 user profile:1 time 2021-04-20-13:02:20 text "how are you"
-HMSET post:4 user profile:2 time 2021-04-20-13:02:25 text "fine"
-ZADD posts 1 post:1
-ZADD posts 2 post:2
-ZADD posts 3 post:3
-ZADD posts 4 post:4
-```
-
-The entry of the Posts table:
-![Posts_row](screenshots/ex2/Post_row.png)
-
-The Posts table:
-![Posts](screenshots/ex2/Posts.png)
+![profile](screenshots/ex2/profile.png)
