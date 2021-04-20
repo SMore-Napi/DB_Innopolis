@@ -67,4 +67,4 @@ The entry of the Posts table:
 ![Posts_row](screenshots/ex2/Post_row.png)
 
 The Posts table:
-![Posts](screenshots/ex1/Posts.png)
+![Posts](screenshots/ex2/Posts.png)
