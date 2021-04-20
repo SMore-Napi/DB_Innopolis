@@ -51,3 +51,20 @@ The Orders table:
 
 
 ## Exercise 2
+Create Posts table
+```
+HMSET post:1 user profile:1 time 2021-04-20-13:02:10 text "hello"
+HMSET post:2 user profile:2 time 2021-04-20-13:02:15 text "hi"
+HMSET post:3 user profile:1 time 2021-04-20-13:02:20 text "how are you"
+HMSET post:4 user profile:2 time 2021-04-20-13:02:25 text "fine"
+ZADD posts 1 post:1
+ZADD posts 2 post:2
+ZADD posts 3 post:3
+ZADD posts 4 post:4
+```
+
+The entry of the Posts table:
+![cutomer_row](screenshots/ex2/Posts_row.png)
+
+The Posts table:
+![cutomer_row](screenshots/ex1/Posts.png)
