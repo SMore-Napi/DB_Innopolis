@@ -56,7 +56,7 @@ Set `Username`, `Id` and `Name` for users:
 HSET profile:1 Username "Booguy" Id 1 Name "Danis"
 HSET profile:2 Username "Smore" Id 2 Name "Roman"
 ```
-![profile](screenshots/ex2/profile.png)
+![profile](screenshots/ex2/profile_begin.png)
 
 Assign followers for each profile:
 ```
