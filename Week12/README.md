@@ -79,7 +79,7 @@ HMSET post:2 user profile:2 time 2021-04-20-13:02:15 text "hi"
 HMSET post:3 user profile:1 time 2021-04-20-13:02:20 text "how are you"
 HMSET post:4 user profile:2 time 2021-04-20-13:02:25 text "fine"
 ```
-![Posts_row](screenshots/ex2/Post_row.png)
+![Posts_row](screenshots/ex2/post.png)
 
 Assign posts to the users:
 ```
